@@ -1,26 +1,196 @@
-@import "tailwindcss";
+.hero{
+  background-image: url('/background.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.hero-content{
+  background: rgba(255,255,255,0.85);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  max-width: 800px;
+
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.hero-title{
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #2c3e50;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.highlight{
+  color: #3498db;
 }
+
+.hero-subtitle{
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #34495e
+}
+
+.hero-button{
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3 ease;
+}
+
+.hero-button:hover{
+  background-color: #2980b9;
+}
+
+/* Navbar styles */
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: rgba(255,255,255,0.8);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo{
+  font-size: 24px;
+  font-weight: bold;
+  color: #4caf50;
+}
+
+.nav-links{
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a{
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.nav-links li a:hover{
+  color: #4caf50;
+}
+
+.footer{
+  background-color: rgba(0,0,0,0.8);
+  padding: 20px 0;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+  margin-top: 50px;
+}
+
+/* search destination styles */
+
+.search-section{
+  padding: 60px 20px;
+  background-color: #f0f8ff;
+  text-align: center;
+}
+
+.search-heading{
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.search-form{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.search-input{
+  padding: 10px 20px;
+  width: 300px;
+  border: 2px solid #4caf50;
+  border-radius: 30px;
+  font-size: 16px;
+}
+
+.search-button{
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-button:hover{
+  background-color: #45a049;
+}
+
+/* explore page styles */
+
+.explore-page{
+  padding: 2rem;
+  background: #f0f8ff;
+  min-height: 100vh;
+}
+
+/* hero-section */
+
+.hero-explore{
+  text-align: center;
+  margin-bottom: 3rem;
+
+}
+
+.hero-explore h1{
+  font-size: 3rem;
+  color: #0c3c78;
+  margin-bottom: 1rem;
+}
+
+.hero-explore p{
+  font-size: 1.5rem;
+  color: #4a4a4a;
+}
+
+.itinerary-section, .flights-section, .hotels-section {
+  margin-bottom: 4rem;
+}
+
+.itinerary-section h2,
+.flights-section h2,
+.hotels-section h2{
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.section-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 2rem;
+}
+
+.card{
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.card:hover{
+  transform: translateY(-5px);
+}
+
