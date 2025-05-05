@@ -1,10 +1,29 @@
 'use client';
-
+import { useEffect,useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import SearchDestination from "../components/SearchDestination";
+import { fetchFlights } from "../utils/fetchFlights";
 
 export default function ExplorePage(){
+    const [flights,setFlights] = useState([]);
+    const [loadingFlights, setLoadingFlights] = useState(true);
+
+    useEffect(() => {
+        const getFlights = async () => {
+          try {
+            const response = await fetchFlights("london");
+            console.log("Flight API response:", response);
+            setFlights(response.data); 
+            setLoadingFlights(false);
+          } catch (err) {
+            console.error("Error fetching flights:", err);
+            setLoadingFlights(false);
+          }
+        };
+    
+        getFlights();
+      }, []);
     return (
         <>
             <Navbar />
@@ -26,14 +45,23 @@ export default function ExplorePage(){
                 </section>
 
                 <section className="flights-section">
-                    <h2>Available Flights 🛫</h2>
-                    {/* will map flight cards here */}
-                    <div className="section-grid">
-                        <div className="card">Flight 1</div>
-                        <div className="card">Flight 2</div>
-                        <div className="card">Flight 3</div>
-                    </div>
-                </section>
+          <h2>Available Flights 🛫</h2>
+          {loadingFlights ? (
+            <p>Loading flights...</p>
+          ) : (
+            <div className="section-grid">
+              {flights.map((flight, index) => (
+                <div className="card" key={index}>
+                  <h3>{flight.airline}</h3>
+                  <p>{flight.departureCity} ➡️ {flight.arrivalCity}</p>
+                  <p>Departure: {flight.departureTime}</p>
+                  <p>Arrival: {flight.arrivalTime}</p>
+                  <p>Price: ₹{flight.price}</p>
+                </div>
+              ))}
+            </div>
+          )}
+        </section>
 
                 <section className="hotels-section">
                     <h2>Top Stays 🏨</h2>
